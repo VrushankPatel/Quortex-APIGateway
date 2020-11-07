@@ -5,8 +5,7 @@ const bodyParser = require("body-parser");
 const app = express();
 var beautify = require("json-beautify");
 const port = 3000;
-const serviceUrl = "https://questaapp.herokuapp.com";
-// const serviceUrl = "localhost:9090";
+const serviceUrl = "localhost:9090";
 
 app.use(cors());
 app.use(bodyParser.json());
