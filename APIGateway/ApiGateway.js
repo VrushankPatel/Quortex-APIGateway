@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 const app = express();
 var beautify = require("json-beautify");
 const port = 6138;
-const serviceUrl = "localhost:9090";
+const serviceUrl = "http://localhost:9090";
 
 app.use(cors());
 app.use(bodyParser.json());
