@@ -51,4 +51,6 @@ forwardRequestTo = (reqdata, authToken, requrl) => {
 		}
 	);
 };
-app.listen(port);
+app.listen(port, () => {
+	console.log("API Gateway is ready to serve on : " + port);
+});
