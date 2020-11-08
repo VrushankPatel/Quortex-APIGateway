@@ -4,7 +4,7 @@ var cors = require("cors");
 const bodyParser = require("body-parser");
 const app = express();
 var beautify = require("json-beautify");
-const port = 3000;
+const port = 6138;
 const serviceUrl = "localhost:9090";
 
 app.use(cors());
