@@ -4,7 +4,7 @@ var cors = require("cors");
 const bodyParser = require("body-parser");
 const app = express();
 var beautify = require("json-beautify");
-const port = 6138;
+const port = 1111;
 const serviceUrl = "http://localhost:9090";
 
 app.use(cors());
@@ -54,3 +54,4 @@ forwardRequestTo = (reqdata, authToken, requrl) => {
 app.listen(port, () => {
 	console.log("API Gateway is ready to serve on : " + port);
 });
+
