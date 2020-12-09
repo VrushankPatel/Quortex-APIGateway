@@ -19,7 +19,6 @@ app.post("/api/*", async (request, response) => {
 	var result = await forwardRequestTo(request.body, authtoken, request.url);
 	let responseCode = result.code || 200;
 	response.status(responseCode).json(result);
-	// console.log("sent response as : " +beautify(result, null, 2, 100) +"\nSuccessfully Sent the response.");
 });
 
 forwardRequestTo = (reqdata, authToken, requrl) => {
@@ -54,4 +53,3 @@ forwardRequestTo = (reqdata, authToken, requrl) => {
 app.listen(port, () => {
 	console.log("API Gateway is ready to serve on : " + port);
 });
-

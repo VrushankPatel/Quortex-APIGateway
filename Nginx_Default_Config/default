@@ -3,7 +3,7 @@ server {
 	listen [::]:80;
 
 
-	server_name questa.tech app.questa.tech;
+	server_name project.io app.project.io;
 
 	location /api/ {
 		proxy_pass http://localhost:1111; #whatever port your app runs on
