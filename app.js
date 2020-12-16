@@ -50,6 +50,10 @@ forwardRequestTo = (reqdata, authToken, requrl) => {
 		}
 	);
 };
+
+// in below line process.env.PORT will take port from environment, because
+// if we use heroku, then it uses the env var to bind the port.
+// so, our specified port can not be used for that.
 app.listen(process.env.PORT || port, () => {
 	console.log("API Gateway is ready to serve on : " + port);
 });
