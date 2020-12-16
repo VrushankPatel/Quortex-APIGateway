@@ -4,8 +4,8 @@ var cors = require("cors");
 const bodyParser = require("body-parser");
 const app = express();
 var beautify = require("json-beautify");
-const port = 1111;
-const serviceUrl = "http://localhost:9090";
+const port = 80;
+const serviceUrl = "https://questaapp.herokuapp.com";
 
 app.use(cors());
 app.use(bodyParser.json());

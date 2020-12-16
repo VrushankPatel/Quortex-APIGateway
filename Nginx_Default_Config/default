@@ -6,7 +6,7 @@ server {
 	server_name project.io app.project.io;
 
 	location /api/ {
-		proxy_pass http://localhost:1111; #whatever port your app runs on
+		proxy_pass http://localhost:1111; #whatever port your api gateway runs on
 	        proxy_http_version 1.1;
 	        proxy_set_header Upgrade $http_upgrade;
 	        proxy_set_header Connection 'upgrade';
@@ -14,7 +14,7 @@ server {
 	        proxy_cache_bypass $http_upgrade;
 	}
 	location / {
-		proxy_pass http://localhost:5000; #whatever port your app runs on
+		proxy_pass http://localhost:5000; #whatever port your app frontend runs on
 	        proxy_http_version 1.1;
 	        proxy_set_header Upgrade $http_upgrade;
 	        proxy_set_header Connection 'upgrade';
