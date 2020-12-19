@@ -1,7 +1,7 @@
 {
-	"name": "nothing",
+	"name": "ReverseProxyAPIGateway",
 	"version": "1.0.0",
-	"main": "temp.js",
+	"main": "ReverseProxyAPIGateway.js",
 	"scripts": {
 		"start": "npm i && node ReverseProxyAPIGateway.js"
 	},
