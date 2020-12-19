@@ -3,7 +3,7 @@
 	"version": "1.0.0",
 	"main": "temp.js",
 	"scripts": {
-		"start": "node APIGateway(Reverse proxy).js"
+		"start": "node APIGateway.js"
 	},
 	"dependencies": {
 		"axios": "^0.20.0",
