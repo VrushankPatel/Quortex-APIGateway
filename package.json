@@ -3,7 +3,7 @@
 	"version": "1.0.0",
 	"main": "ReverseProxyAPIGateway.js",
 	"scripts": {
-		"start": "sudo apt-get install nginx && npm i && node ReverseProxyAPIGateway.js"
+		"start": "npm i && node ReverseProxyAPIGateway.js"
 	},
 	"dependencies": {
 		"axios": "^0.20.0",
