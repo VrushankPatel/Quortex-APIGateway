@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 const app = express();
 var beautify = require("json-beautify");
 const port = 9090;
-const serviceUrl = "https://questaapp.herokuapp.com";
+const serviceUrl = "https://quortex-server.herokuapp.com";
 
 app.use(cors());
 app.use(bodyParser.json());
