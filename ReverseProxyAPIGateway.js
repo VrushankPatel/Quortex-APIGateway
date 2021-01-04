@@ -21,6 +21,10 @@ app.post("/api/*", async (request, response) => {
 	response.status(responseCode).json(result);
 });
 
+app.get("/", async (req, res) => {
+	res.send("welcome to quortex APIGateway...");
+});
+
 forwardRequestTo = (reqdata, authToken, requrl) => {
 	return new Promise(function (resolve, reject) {
 		const axios = require("axios");
