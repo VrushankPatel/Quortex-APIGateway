@@ -6,6 +6,7 @@ const app = express();
 var beautify = require("json-beautify");
 const port = 9090;
 const serviceUrl = "https://quortex-server.herokuapp.com";
+const serviceLiveSuccessResponseCode = 268;
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -22,7 +23,9 @@ app.post("/api/*", async (request, response) => {
 });
 
 app.get("/", async (req, res) => {
-	res.send("welcome to quortex APIGateway...");
+	res
+		.status(serviceLiveSuccessResponseCode)
+		.send(JSON.parse('{"message": "welcome to quortex APIGateway..."}'));
 });
 
 forwardRequestTo = (reqdata, authToken, requrl) => {
