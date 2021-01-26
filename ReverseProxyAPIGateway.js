@@ -11,7 +11,7 @@ getServiceUrl = () => {
 	let gmtTime = new Date().toGMTString().split(" ")[4].split(":")[0];
 	if (gmtTime >= 9 && gmtTime <= 21) {
 		console.log("calling server 1");
-		return "https://quortex-server.herokuapp.com/";
+		return "https://quortex-server.herokuapp.com";
 	} else {
 		console.log("calling server 2");
 		return "https://quortex-server-2.herokuapp.com";
