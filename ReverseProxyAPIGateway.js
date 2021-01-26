@@ -5,7 +5,17 @@ const bodyParser = require("body-parser");
 const app = express();
 var beautify = require("json-beautify");
 const port = 9090;
-const serviceUrl = "https://quortex-server.herokuapp.com";
+
+getServiceUrl = () => {
+	let gmtTime = new Date().toGMTString().split(" ")[4].split(":")[0];
+	if (gmtTime >= 9 && gmtTime <= 21) {
+		console.log("calling server 1");
+		return "https://quortex-server.herokuapp.com/";
+	} else {
+		console.log("calling server 2");
+		return "https://quortex-server-2.herokuapp.com";
+	}
+};
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -31,7 +41,7 @@ forwardRequestTo = (reqdata, authToken, requrl) => {
 		var data = JSON.stringify(reqdata);
 		var config = {
 			method: "post",
-			url: serviceUrl + requrl,
+			url: getServiceUrl() + requrl,
 			headers: {
 				"Content-Type": "application/json",
 				Authorization: "Bearer " + authToken,
