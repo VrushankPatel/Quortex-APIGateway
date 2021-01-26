@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const app = express();
 var beautify = require("json-beautify");
 const port = 9090;
+const serviceLiveSuccessResponseCode = 268;
 
 getServiceUrl = () => {
 	let gmtTime = new Date().toGMTString().split(" ")[4].split(":")[0];
@@ -32,16 +33,20 @@ app.post("/api/*", async (request, response) => {
 });
 
 app.get("/", async (req, res) => {
-	res.send("welcome to quortex APIGateway...");
+	res
+		.status(serviceLiveSuccessResponseCode)
+		.send(JSON.parse('{"message": "welcome to quortex APIGateway..."}'));
 });
 
 forwardRequestTo = (reqdata, authToken, requrl) => {
+	let url = getServiceUrl();
+	console.log("URL is : " + url);
 	return new Promise(function (resolve, reject) {
 		const axios = require("axios");
 		var data = JSON.stringify(reqdata);
 		var config = {
 			method: "post",
-			url: getServiceUrl() + requrl,
+			url: url + requrl,
 			headers: {
 				"Content-Type": "application/json",
 				Authorization: "Bearer " + authToken,
