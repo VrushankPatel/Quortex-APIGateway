@@ -6,17 +6,7 @@ const app = express();
 var beautify = require("json-beautify");
 const port = 9090;
 const serviceLiveSuccessResponseCode = 268;
-
-getServiceUrl = () => {
-	let gmtTime = new Date().toGMTString().split(" ")[4].split(":")[0];
-	if (gmtTime >= 9 && gmtTime <= 21) {
-		console.log("calling server 1");
-		return "https://quortex-server.herokuapp.com";
-	} else {
-		console.log("calling server 2");
-		return "https://quortex-server-2.herokuapp.com";
-	}
-};
+const serviceUrl = "https://quortex-server.herokuapp.com";
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -39,8 +29,7 @@ app.get("/", async (req, res) => {
 });
 
 forwardRequestTo = (reqdata, authToken, requrl) => {
-	let url = getServiceUrl();
-	console.log("URL is : " + url);
+	let url = serviceUrl;
 	return new Promise(function (resolve, reject) {
 		const axios = require("axios");
 		var data = JSON.stringify(reqdata);
