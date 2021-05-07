@@ -7,10 +7,21 @@ var beautify = require("json-beautify");
 const port = 9090;
 const serviceLiveSuccessResponseCode = 268;
 const serviceUrl = "https://quortex-server.herokuapp.com";
+const serviceUrl2 = "https://quortex-server2.herokuapp.com";
 
 app.use(cors());
 app.use(bodyParser.json());
 const debugMode = true;
+
+const getUrlByGMT = () => {
+	const gmtHour = new Date().toUTCString().split(" ")[4].split(":")[0];
+	if (gmtHour >= 7 && gmtHour <= 19) {
+		return serviceUrl;
+	}
+	return serviceUrl2;
+}
+
+console.log(getUrlByGMT())
 app.post("/api/*", async (request, response) => {
 	var authtoken = request.headers.authorization;
 	console.log("Incoming : " + request.url);
@@ -29,7 +40,7 @@ app.get("/", async (req, res) => {
 });
 
 forwardRequestTo = (reqdata, authToken, requrl) => {
-	let url = serviceUrl;
+	let url = getUrlByGMT();
 	return new Promise(function (resolve, reject) {
 		const axios = require("axios");
 		var data = JSON.stringify(reqdata);
