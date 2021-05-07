@@ -21,7 +21,6 @@ const getUrlByGMT = () => {
 	return serviceUrl2;
 }
 
-console.log(getUrlByGMT())
 app.post("/api/*", async (request, response) => {
 	var authtoken = request.headers.authorization;
 	console.log("Incoming : " + request.url);
