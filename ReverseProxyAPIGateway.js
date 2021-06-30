@@ -14,8 +14,9 @@ app.use(bodyParser.json());
 const debugMode = true;
 
 const getUrl = () => {
-	let date = Date().split(" ")[2];
-	return date < 15 ? serviceUrl : serviceUrl2;
+	// let date = Date().split(" ")[2];
+	// return date < 15 ? serviceUrl : serviceUrl2;
+	return serviceUrl2;
 }
 
 app.post("/api/*", async (request, response) => {
