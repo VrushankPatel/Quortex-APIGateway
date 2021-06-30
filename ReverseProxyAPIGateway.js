@@ -13,12 +13,9 @@ app.use(cors());
 app.use(bodyParser.json());
 const debugMode = true;
 
-const getUrlByGMT = () => {
-	const gmtHour = new Date().toUTCString().split(" ")[4].split(":")[0];
-	if (gmtHour >= 7 && gmtHour <= 19) {
-		return serviceUrl;
-	}
-	return serviceUrl2;
+const getUrl = () => {
+	let date = Date().split(" ")[2];
+	return date < 15 ? serviceUrl : serviceUrl2;
 }
 
 app.post("/api/*", async (request, response) => {
@@ -26,7 +23,7 @@ app.post("/api/*", async (request, response) => {
 	console.log("Incoming : " + request.url);
 	try {
 		authtoken = authtoken.replace("Bearer", "").trim();
-	} catch (e) {}
+	} catch (e) { }
 	var result = await forwardRequestTo(request.body, authtoken, request.url);
 	let responseCode = result.code || 200;
 	response.status(responseCode).json(result);
@@ -39,7 +36,7 @@ app.get("/", async (req, res) => {
 });
 
 forwardRequestTo = (reqdata, authToken, requrl) => {
-	let url = getUrlByGMT();
+	let url = getUrl();
 	return new Promise(function (resolve, reject) {
 		const axios = require("axios");
 		var data = JSON.stringify(reqdata);
